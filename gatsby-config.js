@@ -3,8 +3,8 @@
  */
 module.exports = {
   siteMetadata: {
-    title: `cct`,
-    siteUrl: `https://www.yourdomain.tld`,
+    title: `cct-phil`,
+    pathPrefix: "/cct-phil",
   },
   plugins: [],
 }
