@@ -1,10 +1,10 @@
 name: Deploy to Neocities
 
-# Only push master
 on:
+  # Runs on pushes targeting the default branch
   push:
-    branches:
-      - main
+    branches: ["main"]
+
 
 concurrency: # prevent concurrent deploys doing strange things
   group: deploy-to-neocities
@@ -16,7 +16,7 @@ defaults:
     shell: bash
 
 jobs:
-      build:
+  build:
     runs-on: ubuntu-latest
     steps:
       - name: Checkout
@@ -71,14 +71,12 @@ jobs:
 
   # Deployment job
   deploy:
-  runs-on: ubuntu-latest
-  needs: remote-build
-
-  steps:
+    runs-on: ubuntu-latest
+    steps:
     # When the dist_dir is ready, deploy it to neocities
-    - name: Deploy to neocities
-      uses: bcomnes/deploy-to-neocities@v1.1.13
-      with:
-        api_token: ${{ secrets.NEOCITIES_API_TOKEN }}
-        cleanup: false
-        dist_dir: public
+      - name: Deploy to neocities
+        uses: bcomnes/deploy-to-neocities@v1.1.13
+        with:
+          api_token: ${{ secrets.NEOCITIES_API_TOKEN }}
+          cleanup: false
+          dist_dir: public
