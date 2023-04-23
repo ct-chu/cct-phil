@@ -68,12 +68,7 @@ jobs:
         uses: actions/upload-pages-artifact@v1
         with:
           path: public
-
-  # Deployment job
-  deploy:
-    runs-on: ubuntu-latest
-    steps:
-    # When the dist_dir is ready, deploy it to neocities
+      # When the dist_dir is ready, deploy it to neocities
       - name: Deploy to neocities
         uses: bcomnes/deploy-to-neocities@v1.1.13
         with:
